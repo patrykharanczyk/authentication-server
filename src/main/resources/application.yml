@@ -1,24 +1,5 @@
-spring:
-  application:
-    name: authentication-server
-  security:
-    user:
-      name: "user"
-      password: "pass"
-    oauth2:
-      authorization-server:
-        client:
-          main-client:
-            registration:
-              client-id: "main-client"
-              client-secret: "{noop}secret"
-              client-authentication-methods:
-                - "client_secret_basic"
-              authorization-grant-types:
-                - "authorization_code"
-              scopes:
-                - "openid"
-                - "profile"
-              redirect-uris:
-                - "https://oauth.pstmn.io/v1/callback"
+application:
+  name: authorization-server
+server:
+  port: 9000
 logging.level.org.springframework.security: DEBUG
