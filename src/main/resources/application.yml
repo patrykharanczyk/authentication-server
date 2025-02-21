@@ -2,4 +2,26 @@ application:
   name: authorization-server
 server:
   port: 9000
-logging.level.org.springframework.security: DEBUG
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/root
+    username: root
+    password: root
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+    show-sql: true
+  sql:
+    init:
+      mode: always
+logging:
+  level:
+    org:
+      hibernate:
+        sql: DEBUG
+        type: TRACE
+        orm:
+          jdbc:
+            bind: TRACE
+    org.springframework.security: DEBUG
