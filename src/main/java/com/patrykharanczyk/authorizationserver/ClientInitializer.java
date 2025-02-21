@@ -37,8 +37,18 @@ public class ClientInitializer implements SmartInitializingSingleton {
                 .scope("resolutions:write")
                 .build();
 
+        RegisteredClient resourceServer = RegisteredClient
+                .withId("resource-server")
+                .clientId("resource-server")
+                .clientSecret(passwordEncoder.encode("resolutions321"))
+                .clientIdIssuedAt(Instant.now())
+                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+                .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
+                .scope("introspection")
+                .build();
 
         clientRepository.save(client);
+        clientRepository.save(resourceServer);
         System.out.println("Initializing clients finished");
     }
 }
