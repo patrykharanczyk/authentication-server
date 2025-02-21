@@ -1,4 +1,4 @@
-package com.patrykharanczyk.authenticationserver.security;
+package com.patrykharanczyk.authorizationserver.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

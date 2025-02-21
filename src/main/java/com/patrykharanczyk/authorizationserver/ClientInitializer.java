@@ -1,6 +1,6 @@
-package com.patrykharanczyk.authenticationserver;
+package com.patrykharanczyk.authorizationserver;
 
-import com.patrykharanczyk.authenticationserver.repository.JpaRegisteredClientRepository;
+import com.patrykharanczyk.authorizationserver.repository.JpaRegisteredClientRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;

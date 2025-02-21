@@ -1,9 +1,9 @@
-package com.patrykharanczyk.authenticationserver.repository;
+package com.patrykharanczyk.authorizationserver.repository;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.Module;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.patrykharanczyk.authenticationserver.model.Client;
+import com.patrykharanczyk.authorizationserver.model.Client;
 import org.springframework.security.jackson2.SecurityJackson2Modules;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;

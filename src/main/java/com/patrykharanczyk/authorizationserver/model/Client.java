@@ -1,4 +1,4 @@
-package com.patrykharanczyk.authenticationserver.model;
+package com.patrykharanczyk.authorizationserver.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

@@ -1,6 +1,6 @@
-package com.patrykharanczyk.authenticationserver.repository;
+package com.patrykharanczyk.authorizationserver.repository;
 
-import com.patrykharanczyk.authenticationserver.model.Client;
+import com.patrykharanczyk.authorizationserver.model.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
