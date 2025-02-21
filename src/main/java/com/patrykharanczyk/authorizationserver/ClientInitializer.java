@@ -3,6 +3,7 @@ package com.patrykharanczyk.authorizationserver;
 import com.patrykharanczyk.authorizationserver.repository.JpaRegisteredClientRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.SmartInitializingSingleton;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
@@ -13,9 +14,11 @@ import java.time.Instant;
 
 @Service
 public class ClientInitializer implements SmartInitializingSingleton {
-    RegisteredClientRepository clientRepository;
+    private final PasswordEncoder passwordEncoder;
+    private final RegisteredClientRepository clientRepository;
 
-    public ClientInitializer(JpaRegisteredClientRepository clientRepository) {
+    public ClientInitializer(PasswordEncoder passwordEncoder, JpaRegisteredClientRepository clientRepository) {
+        this.passwordEncoder = passwordEncoder;
         this.clientRepository = clientRepository;
     }
 
@@ -26,7 +29,7 @@ public class ClientInitializer implements SmartInitializingSingleton {
         RegisteredClient client = RegisteredClient
                 .withId("resolutions-client")
                 .clientId("resolutions-client")
-                .clientSecret("{noop}secret")
+                .clientSecret(passwordEncoder.encode("resolutions123"))
                 .clientIdIssuedAt(Instant.now())
                 .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
