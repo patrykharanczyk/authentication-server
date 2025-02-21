@@ -8,8 +8,12 @@ import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
+import org.springframework.security.oauth2.server.authorization.settings.ClientSettings;
+import org.springframework.security.oauth2.server.authorization.settings.OAuth2TokenFormat;
+import org.springframework.security.oauth2.server.authorization.settings.TokenSettings;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
 import java.time.Instant;
 
 @Service
@@ -35,6 +39,11 @@ public class ClientInitializer implements SmartInitializingSingleton {
                 .authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
                 .scope("resolutions:read")
                 .scope("resolutions:write")
+                .tokenSettings(TokenSettings.builder()
+                        .accessTokenTimeToLive(Duration.ofDays(999999999))
+                        .accessTokenFormat(OAuth2TokenFormat.REFERENCE)
+                        .build())
+                .clientSettings(ClientSettings.builder().build())
                 .build();
 
         RegisteredClient resourceServer = RegisteredClient
